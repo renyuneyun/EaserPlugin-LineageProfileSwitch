@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LineageProfileSwitch</string>
+    <string name="text_description">This Plugin of Easer allows you to load your selected LineageOS Profile.
+    \nMake sure your are running LineageOS or derived ROMs.
+    \nYou can now use this Plugin in Easer.</string>
+
+</resources>
