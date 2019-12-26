@@ -34,7 +34,17 @@ public class TriggerOperationReceiver extends BroadcastReceiver {
         if (RemotePlugin.OperationPlugin.ACTION_TRIGGER.equals(intent.getAction())) {
             RemoteOperationData remoteOperationData = intent.getParcelableExtra(RemotePlugin.EXTRA_DATA);
             SwitchProfileData data = new SwitchProfileData(context, remoteOperationData);
-            ProfileManager.getInstance(context).setActiveProfile(data.getProfileUUID());
+            boolean result = false;
+            if (context.getPackageManager().hasSystemFeature("org.lineageos.profiles")) {
+                ProfileManager.getInstance(context).setActiveProfile(data.getProfileUUID());
+                result = true;
+            }
+            Intent reply = new Intent(RemotePlugin.OperationPlugin.ACTION_TRIGGER_RESULT);
+            String replyPackage = intent.getStringExtra(RemotePlugin.EXTRA_REPLY_PACKAGE);
+            // For a correctly implemented communication (since Easer v0.7.9), we could `assert replyPackage != null`
+            reply.setPackage(replyPackage);
+            reply.putExtra(RemotePlugin.OperationPlugin.EXTRA_SUCCESS, result);
+            context.sendBroadcast(reply);
         }
     }
 }

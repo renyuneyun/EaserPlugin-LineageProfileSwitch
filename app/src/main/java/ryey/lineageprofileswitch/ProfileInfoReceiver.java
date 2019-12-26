@@ -37,6 +37,8 @@ public class ProfileInfoReceiver extends BroadcastReceiver {
             response.putExtra(RemotePlugin.EXTRA_PLUGIN_TYPE, RemotePlugin.TYPE_OPERATION_PLUGIN);
             response.putExtra(RemotePlugin.OperationPlugin.EXTRA_PLUGIN_CATEGORY, PluginInfo.CATEGORY);
             response.putExtra(RemotePlugin.EXTRA_ACTIVITY_EDIT_DATA, PluginInfo.EDIT_DATA_ACTIVITY);
+            String replyPackage = intent.getStringExtra(RemotePlugin.EXTRA_REPLY_PACKAGE);
+            response.setPackage(replyPackage);
             context.sendBroadcast(response);
         }
     }
