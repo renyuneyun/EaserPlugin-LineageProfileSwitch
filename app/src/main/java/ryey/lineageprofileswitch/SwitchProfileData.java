@@ -20,7 +20,7 @@
 package ryey.lineageprofileswitch;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,8 +28,6 @@ import org.json.JSONObject;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
 import ryey.easer.plugin.PluginDataFormat;
 import ryey.easer.remote_plugin.RemoteOperationData;
 
